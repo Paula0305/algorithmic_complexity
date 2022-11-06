@@ -1,6 +1,6 @@
 # algorithmic_complexity
 Analiza złożoności obliczeniowej typowych algorytmów
-'''py
+```py
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -9,4 +9,5 @@ ypoints = y
 
 plt.plot(xpoints, ypoints)
 plt.show()
-'''
+```
+
