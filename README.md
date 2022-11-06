@@ -9,13 +9,13 @@ Postać rekurencyjną przedstawiamy do wyświetlenia pojedynczego wyrazu lub nie
 ```py
 def fibonacci(n):
     if n < 0:
-        return "Podaj dodatnie liczby"
+        return "Please enter a positive number"
     if(n == 0 or n == 1):
         return 1
     if n > 0:
         return fibonacci(n - 1) + fibonacci(n -2)
     else:
-        return "Coś poszło nie tak"
+        return "Oops something went wrong, please try again"
 ```
 ![rekurencyjny](https://user-images.githubusercontent.com/117033508/200169987-21ca0c89-9aa7-4ef8-adc5-1c589d05b7e2.png)
 
