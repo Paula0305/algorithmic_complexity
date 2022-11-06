@@ -1,7 +1,8 @@
 # algorithmic_complexity
 Analiza złożoności obliczeniowej typowych algorytmów
+Za pomocą niżej napisanego kodu, porównamy metodę rekurencyjną oraz iteracyjną w liczeniu ciągu Fibonacciego. Postaram się udowodnić, iż sposób iteracyjny jest dużo szybszy oraz pozwala na sprawne policzenie nawet 10 000 elementu. 
 
-##Rekurencyjny Fibonacci
+## Rekurencyjny Fibonacci
 
 ```py
 def fibonacci(n):
@@ -15,8 +16,9 @@ def fibonacci(n):
         return "Coś poszło nie tak"
 ```
 
-##Iteracyjny Fibonacci
 
+## Iteracyjny Fibonacci
+```py
 def fib(n):
     count = 0
     n1 = 1
@@ -34,5 +36,7 @@ def fib(n):
             n2 = nth
             count += 1
         return fib_list[count-1]
+        
+ ```
 
 ![pobrane](https://user-images.githubusercontent.com/117033508/200164888-4bf90a4f-83a1-4787-b2e9-a22bff937898.png)
