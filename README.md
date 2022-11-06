@@ -2,6 +2,7 @@
 Analiza złożoności obliczeniowej typowych algorytmów
 
 Za pomocą niżej napisanego kodu, porównamy metodę rekurencyjną oraz iteracyjną w liczeniu ciągu Fibonacciego. Postaram się udowodnić, iż sposób iteracyjny jest dużo szybszy oraz pozwala na sprawne policzenie 10 000 elementów i więcej. Ciąg Fibonacciego definiujemy przypisując pierwszemu elementowi 0, natomiast drugiemu wartość 1 :
+
 ![fib od 0](https://user-images.githubusercontent.com/117033508/200172950-14d3da03-477e-4636-9a18-ee71989ff7fb.jpg)
 
 Druga definicja mówi, iż zaczynamy przypisując zarówno pierwszemu jak i drugiemu elementowi wartość 1: 
@@ -54,7 +55,8 @@ def fib(n):
 
 Chciałabym także przedstawić wykres liczony metodą iteracyjną dla 10 000 elementów. Jest on bardzo ciekawy, ponieważ możemy zauważyć, iż niektóre dalsze elementy są liczone szybciej. Zdażają się iteracje, iż komputer wolniej radzi sobie z mniejszymi elementami, co przedstawia wykres. 
 
-![Fibonacci_faster_add](https://user-images.githubusercontent.com/117033508/200173643-a026d8a0-91d9-462f-9d5f-eb6ec726e99a.png)
+![Fibonacci_faster_add](https://user-images.githubusercontent.com/117033508/200173796-1ee48142-fcd5-4500-ac39-3187b3e3c4f2.png)
+
 
 ## Porównanie wersji rekurencyjne i iteracyjnej
 Poniższy wykres przedstawia szybkość obliczenia poszczególnych elementów dwiema metodami : iteracyjną i rekurencyjną. Widzimy, iż wykres rekurencyjnej wersji (ciemnoniebieska linia przerywana) już przy 25 elemencie ciągu, zaczyna znacząco zwiększać czas, który jest potrzebny do obliczenia elementu. W tym samym czasie wersja iteracyjna ( jasnobłekitna linia ciągła) pozostaje praktycznie w nienaruszonym stanie. Dalej przy 35 elemencie jest ultra blisko wartości 0s. 
