@@ -130,4 +130,25 @@ def calculate_iterative_search(n,dataset):
     end = timer()
     return end - start
 ```
+Najpierw sprawdźmy czasy dla wyszukiwania konkretnego elementu w tablicy 10 elementowej:
+
+![wyszukiwanie_100](https://user-images.githubusercontent.com/117033508/200340406-f295183f-5e86-42cb-b3fd-9b4a628c493d.jpg)
+
+Widzimy, że czas jest porównywalny, a nawet wyszukwianie rekurencyjne, jest szybsze niż iteracyjne. Mamy niewele elementów, więc pętla for, bardzo szybko przejdzie. 
+
+Przejdźmy zatem do wyszukiwania przy 1000 elementowej tablicy :
+
+![wyszukiwanie_1000](https://user-images.githubusercontent.com/117033508/200340844-c5d62b1c-19d7-41dc-97e1-d1a1144d9912.jpg)
+
+Możemy już zauważyć, znaczącą różnicę w czasie wykonywania operacji. Iteracyjny sposób jest szybszy, o blisko 1 sekundę.  Przekonałam Cię już, że iteracyjny jest lepszy? Nie? No to teraz już na pewno przyznasz mi rację. Popatrz co dzieje się przy 10 000 elementowej tablicy. :)
+
+![wyszukiwanie_10000](https://user-images.githubusercontent.com/117033508/200341360-10546097-8061-482e-a196-2626c5350470.jpg)
+
+Wyszkiwanie iteracyjne, jest diametralnie szybsze, niż rekurencyjne !!!
+
+![image](https://user-images.githubusercontent.com/117033508/200342062-db99dc08-d3de-4cc2-9e61-29a5005825ce.png)
+
+
+Myślę, że wystarczająco pokazałam zasadę działania, tych dwóch metod. 
+
 
