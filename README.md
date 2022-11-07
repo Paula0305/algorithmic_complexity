@@ -73,14 +73,22 @@ Wniosek zatem jest bardzo prosty. Zdecydowanie lepszą metodą jest liczenie ite
 
 ## WYSZUKIWANIE BINARNE 
 
-Przechodząc dalej, porównamy wyszukiwanie binarne za pomocą kodu w wersji rekurencyjnej i iteracyjnej. Które jest szybsze, jaka ilość operacji zostanie wykonana, aby znaleźć odpowiednią liczbę oraz ile czasu to zajęło. 
-
-## Wyszukiwanie rekurencyjne
-
-Sprawdzając czy liczba L znajuje się w 1000 elementowej liście, przy zastosowaniu standardowej pętli for, w najggorszym wypadku wykonamy 1000 iteracji. Musimy sprawdzać element, po elemencie. Wiadomo, może się zdarzyć, że nam się poszczęści i szukana liczba będzie na jednym z pierwszych miejsc. Jednak nadzieja Matką głupich jak to mówią. 
+Przechodząc dalej, porównamy wyszukiwanie binarne za pomocą kodu w wersji liniowej i o złożoności logarytmicznej. Które jest szybsze, jaka ilość operacji zostanie wykonana, aby znaleźć odpowiednią liczbę oraz ile czasu to zajęło. 
+Zaczniemy od wygenerowania tablicy, z losowymi liczbami oraz posortowania jej, co znacznie ułatwi szukanie danej liczby. 
 
 ```py
-def recurrent_search(x, dataset):
+import random
+
+dataset = [random.randint(1,10000) for x in range(1,10000)]
+dataset = sorted(dataset)
+```
+
+## Wyszukiwanie liniowa
+
+Sprawdzając czy liczba L znajuje się w 1000 elementowej liście, przy zastosowaniu standardowej pętli for, w najgorszym wypadku wykonamy 1000 iteracji. Musimy sprawdzać element, po elemencie. Wiadomo, może się zdarzyć, że nam się poszczęści i szukana liczba będzie na jednym z pierwszych miejsc. Jednak nadzieja Matką głupich jak to mówią. 
+
+```py
+def linear_search(x, dataset):
 
     for idx, number in enumerate(dataset):
         if(x == number):
@@ -88,12 +96,12 @@ def recurrent_search(x, dataset):
     return -1
 ```      
 
-## Wyszukiwanie iteracyjne
+## Wyszukiwanie o złożoności logarytmicznej
 
-Wyszukiwanie za pomocą algorytmu binarnego, jest dużo wydajniejsze i szybsze przy większych rozmiarach tablicy. W wersji rekurencyjnej dla 1000 elementów musieliśmy wykonać w najgorszym wypadku, aż 1000 iteracji, tutaj tylko 10 !!!
+Wyszukiwanie za pomocą algorytmu binarnego, jest dużo wydajniejsze i szybsze przy większych rozmiarach tablicy. W wersji liniowej dla 1000 elementów musieliśmy wykonać w najgorszym wypadku, aż 1000 iteracji, tutaj tylko 10 !!! Z każdym przejściem pętli while, zmniejszamy wielkość naszej tablicy o połowe ! Dzięki temu szybko zmierzamy do osiągniecia tablicy jednoelementowej. 
 
 ```py
-def iterative_search(search_number, dataset):
+def exponential_search(search_number, dataset):
     left = 0 
     right = len(dataset) 
     index = 0 
@@ -109,8 +117,9 @@ def iterative_search(search_number, dataset):
                 right = index 
 
     return -1
+
 ```
-## Porównanie wersji rekurencyjnej i iteracyjnej
+## Porównanie wersji liniowej i o złożoności logarytmicznej
 
 Sprawdźmy zatem czas wyszukiwania, dla obu wersji wykorzystując tablice o wielkościach 10 , 1000, 10 000
 
@@ -118,15 +127,15 @@ Sprawdźmy zatem czas wyszukiwania, dla obu wersji wykorzystując tablice o wiel
 from timeit import default_timer as timer
 
 
-def calculate_recurrent_search(n,dataset):
+def calculate_linear_search(n,dataset):
     start = timer()
-    recurrent_search(n,dataset)
+    linear_search(n,dataset)
     end = timer()
     return end - start
 
-def calculate_iterative_search(n,dataset):
+def calculate_exponential_search(n,dataset):
     start = timer()
-    iterative_search(n,dataset)
+    exponential_search(n,dataset)
     end = timer()
     return end - start
 ```
@@ -134,17 +143,21 @@ Najpierw sprawdźmy czasy dla wyszukiwania konkretnego elementu w tablicy 10 ele
 
 ![wyszukiwanie_100](https://user-images.githubusercontent.com/117033508/200340406-f295183f-5e86-42cb-b3fd-9b4a628c493d.jpg)
 
-Widzimy, że czas jest porównywalny, a nawet wyszukwianie rekurencyjne, jest szybsze niż iteracyjne. Mamy niewele elementów, więc pętla for, bardzo szybko przejdzie. 
+Widzimy, że czas jest porównywalny, a nawet wyszukwianie liniowe, jest szybsze niż logarytmiczne. Mamy niewele elementów, więc pętla for, bardzo szybko przejdzie. 
 
 Przejdźmy zatem do wyszukiwania przy 1000 elementowej tablicy :
 
 ![wyszukiwanie_1000](https://user-images.githubusercontent.com/117033508/200340844-c5d62b1c-19d7-41dc-97e1-d1a1144d9912.jpg)
 
-Możemy już zauważyć, znaczącą różnicę w czasie wykonywania operacji. Iteracyjny sposób jest szybszy, o blisko 1 sekundę.  Przekonałam Cię już, że iteracyjny jest lepszy? Nie? No to teraz już na pewno przyznasz mi rację. Popatrz co dzieje się przy 10 000 elementowej tablicy. :)
+Możemy już zauważyć, znaczącą różnicę w czasie wykonywania operacji. Sposób o złożoności logarytmicznej jest szybszy, o blisko 1 sekundę.  Przekonałam Cię już, że logarytmiczny jest lepszy? Nie? No to teraz już na pewno przyznasz mi rację. Popatrz co dzieje się przy 10 000 elementowej tablicy. :)
 
 ![wyszukiwanie_10000](https://user-images.githubusercontent.com/117033508/200341360-10546097-8061-482e-a196-2626c5350470.jpg)
 
-Wyszkiwanie iteracyjne, jest diametralnie szybsze, niż rekurencyjne !!!
+Wyszkiwanie o złożoności logarytmicznej, jest diametralnie szybsze, niż liniowe !!!
+Chodzi o to, że w przypadku wersji liniowej, musisz przejść po tylu elementach tablicy, dopóki nie znajdziesz szukanego elementu. Czyli może to być nawet N razy w tablicy N elementowej ! W przypadku wersji o złożoności logarytmicznej, z każdym przejściem pętli while, zmniejszamy naszą tablicę o połowę.
+Zawężamy obszar szukania, dzięki posortowanej tablicy i sprawdzaniu, w której połowie znajduje się nasza liczba. 
+Czyli, mając tablicę N elementową, po pierwszy przejściu, zostaje nam już tylko N/2 elementów, po drugim N/4, po trzecim N/8 !!!
+Systematycznie, zmniejszamy rozmiar tablicy o połowę, co skutkuje bardzo szybkim zmieżaniem do tablicy 1 elementowej i odczytanie poprawnego wyniku :)
 
 ![image](https://user-images.githubusercontent.com/117033508/200342062-db99dc08-d3de-4cc2-9e61-29a5005825ce.png)
 
